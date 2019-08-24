@@ -2,13 +2,14 @@
 class Navbar 
 {
     constructor() {
+        this.addHeaders();
         this.render();
         this.navSlide();
     }
 
     render = () => {
         const navbar = document.getElementById("navbar");
-        navbar.innerHTML = 
+        navbar.innerHTML += 
         `
             <img src="/uploads/logo.png" class="logoImage" width="30vw" />
             <div class="logo">
@@ -47,6 +48,13 @@ class Navbar
             burger.classList.toggle("toggle");
 
         });  
+    }
+
+    addHeaders = () => {
+        const head = document.getElementsByTagName("head");
+        head[0].innerHTML += `<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">`;
+        head[0].innerHTML += `<link rel="stylesheet" href="./Components/navbar.css">`;
+
     }
 };
 
