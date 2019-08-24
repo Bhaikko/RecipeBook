@@ -64,16 +64,20 @@
     text-transform: uppercase;
 }
 
+.info2 {
+    position: relative;
+}
+
 
 .info2>img {
     position: absolute;
-    transform: translate(150px, -100px);
-    
+    left: -50px;
+    top: 150px;
+
 }
 
 .recipeCircle {
     position: absolute;
-    transform: translate(150px, -100px);
 }
 
 .recipeCircle img {
@@ -89,6 +93,8 @@
     
 }
 
+
+
 @keyframes move {
     from {
         opacity: 0;
@@ -96,7 +102,6 @@
     to {
         opacity: 1;
         transform: translateX(var(--x, 200px)) translateY(var(--y, 200px));
-        
     }
 }
 
@@ -104,4 +109,29 @@
     .info1 {
         display: none;
     }
+    .recipeCircle {
+        position: absolute;
+        top: -175px;
+        left: 190px;
+    }
+
+
+    .info2>img {
+        position: absolute;
+        left: 130px;
+        top: -40px;
+
+    }
 }
+
+#page3 {
+    background-color: whitesmoke;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
