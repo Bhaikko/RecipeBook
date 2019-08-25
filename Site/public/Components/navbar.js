@@ -9,7 +9,7 @@ class Navbar
 
     render = () => {
         const navbar = document.getElementById("navbar");
-        navbar.innerHTML += 
+        navbar.innerHTML = 
         `
             <img src="/uploads/logo.png" class="logoImage" width="30vw" />
             <div class="logo">
@@ -18,8 +18,8 @@ class Navbar
 
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+                <li><a href="#page3">Login</a></li>
             </ul>
 
             <div class="burger">

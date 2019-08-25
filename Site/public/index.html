@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="index.css">
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 <body>
@@ -16,7 +18,8 @@
     <div class="page" id="page1">
         <div id="page1Content">
             <h3>Food Lovers Who Like To Make Their Own Food,<br/>You've Come To Right Place</h3>
-            <button id="getStartedButton">Get Started</button>
+            <a href="#page3"><button id="getStartedButton">Get Started</button></a>
+            <a href="#page2"><button id="readMoreButton">Read More</button></a>
         </div>
     </div>
     
@@ -80,15 +83,55 @@
     </div>
     
     <div class="page" id="page3">
-        <div class="forms">
-            <form id="loginForm" method="POST" action="/user/login"></form>
+        <div class="box">
+            <form id="loginForm"></form>
         </div>
         
+        <div class="box">
+            <form id="signupForm"></form>
+        </div>
+    
     </div>
 
-    
+
+    <footer id="footer">
+        <div class="col1">
+            <div class="detail">
+                <img src="/uploads/location.jpg">
+                <b>Paris, France</b>
+            </div>
+
+            <div class="detail">
+                <img src="/uploads/Phone.jpg">
+                <b>+91 9999999999</b>
+            </div>
+
+            <div class="detail">
+                    <img src="/uploads/mail.jpg">
+                <b><a href="mailto://">support@company.com</a></b>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="aboutMe">
+                <h3>About Me</h3><br>
+                Hi, I'm Siddharth or known by the nick of 'Bhaikko'. I'm a full stack Web And Game Developer.
+            </div>
+
+            <div class="links">
+                <a href="https://www.reddit.com/user/bhaikko/"><img src="/uploads/reddit.png"></a>
+                <a href="https://steamcommunity.com/id/Bhaikko"><img src="/uploads/steam.png"></a>
+                <a href="https://github.com/bhaikko/"><img src="/uploads/github.png"></a>
+
+            </div>
+        </div>
+    </footer>
+
 
     <script src="./Components/navbar.js"></script>
+    <script src="./Components/loginForm.js"></script>
+    <script src="./Components/signupForm.js"></script>
+    
     <script src="index.js"></script>
 </body>
 </html>
