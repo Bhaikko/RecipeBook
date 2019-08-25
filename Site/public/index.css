@@ -49,20 +49,26 @@ html {
 
 #readMoreButton {
     font-family: 'Raleway', sans-serif;
-    background-color: #00B9B9;
-    color: whitesmoke;
+
+    color: black;
     font-weight: bolder;
     cursor: pointer;
     width: 100px;
     height: 4vh;
-    padding: 5px;
-    border-radius: 5%;
     box-shadow: 0px 5px 5px grey;
-    border: 2px solid #00B9B9;
+
     outline: none;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
     position: absolute;
-    bottom: 10px;
+    bottom: 35px;
     left: 46.5%;
+}
+
+#readMoreButton img {
+    mix-blend-mode: multiply;
 }
 
 #page2 {
@@ -115,6 +121,11 @@ html {
     
 }
 
+#searchList>li {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
 
 
 @keyframes move {
@@ -124,6 +135,26 @@ html {
     to {
         opacity: 1;
         transform: translateX(var(--x, 200px)) translateY(var(--y, 200px));
+        display: list-item;
+    }
+}
+
+@keyframes leftSlide {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes rightSlide {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
     }
 }
 
@@ -151,7 +182,6 @@ html {
     background-color: whitesmoke;
     color: black;
     display: flex;
-    /* flex-direction: row; */
     align-content: center;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -161,6 +191,18 @@ html {
     background: linear-gradient(120deg, #8e44ad, #3498db);
     padding: 50px;
     border-radius: 10px;
+    box-shadow: 10px 10px 5px grey;
+
+}
+
+.box:nth-child(1) {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.box:nth-child(2) {
+    opacity: 0;
+    transform: translateX(100px);
 }
 
 footer {
@@ -168,11 +210,9 @@ footer {
     margin-top: 5px;
     background-color: #30B7D0;
     color: white;
-    /* height: 150px; */
     display: flex;
     justify-content: space-around;
     align-content: center;
-    
 }
 
 a {
@@ -203,4 +243,6 @@ footer img {
     background-color: whitesmoke;
     mix-blend-mode: normal;
     border-radius: 10px;
+    filter: drop-shadow(10px 10px 4px grey);
 }
+
