@@ -66,3 +66,63 @@ body {
     }
 }
 
+/* RECIPE BOX CSS, MIGHT NEED TO REFACTOR */
+
+.recipesBox {
+    padding: 3%;
+    margin-top: 3%;
+    background-color: whitesmoke;
+    margin-left: 5%;
+    width: 90vw;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.recipeCard {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    color: whitesmoke;
+    background-color: black;
+    height: 40vh;
+    width: 15vw;
+    border: 2px solid grey;
+    position: relative;
+}
+
+.recipeImage {
+    width: 100%;
+    height: 60%;
+
+}
+
+.recipeContent {
+    padding: 5px;
+}
+
+.recipeName {
+    font-size: 10px;
+}
+
+.rating img {
+    width: 5%;
+}
+
+.number {
+    color: grey;
+    font-size: 10px;
+}
+
+.author {
+    position: absolute;
+    bottom: 2px;
+}
+
+.authorProfile {
+    width: 15%;
+    vertical-align: middle;
+    border-radius: 30px;
+
+}
+
