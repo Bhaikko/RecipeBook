@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.userDetails {
+    margin-left: 5%;
+    display: inline-block;
+    height: 80vh;
+    width: 20vw;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    position: relative;
+}
+
+.details {
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.username {
+    font-size: 24px;
+    font-family: 'Lexend Zetta', sans-serif;
+
+}
+
+.profilePicture {
+    width: 100%;
+    height: 40%;    
+}
+
+.rating img {
+    width: 7%;
+}
+
+.number {
+    font-size: 10px;
+    color: grey;
+}
+
+.about {
+    margin-top: 5%;
+    overflow-y: auto;
+    max-height: 120px;
+}
+
+.editButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    outline: 0px;
+    border: 0px;
+    padding: 7px;
+    cursor: pointer;
+    background-color: #4A2D73;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+.rightSection {
+    display: inline-block;
+    vertical-align: top;
+    width: 65vw;
+}
+
+.myrecipes {
+    width: 100%;
+    height: 40vh;   
+    background-color: whitesmoke;
+    margin-left: 10%;
+    padding: 10px;
+
+}
+
+.myrecipes>h3 {
+    text-align: center;
+    font-family: 'Lexend Zetta', sans-serif;
+
+}
+
+
+
+.recipe {
+    margin-top: 5px;
+    width: 100%;
+    height: 10vh;
+    background-color: black;
+    padding: 10px;
+    color: whitesmoke;
+    vertical-align: middle;
+}
+
+.recipeBox {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.recipeImage {
+    width: 5vw;
+    height: 100%;
+}
+
+.recipeName {
+    font-family: 'Lexend Zetta', sans-serif;
+    margin-top: 0px;
+}
+
+.recipeStars>img {
+    width: 5%;
+}
+
+.recipeNumbers {
+    color: grey;
+    font-size: 12px;
+}
+
+.deleteButton {
+    height: 100%;
+    width: 4vw;
+    outline: 0px;
+    border: 0px;
+    color: red;
+    background-color: black;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.deleteButton>img {
+    width: 100%;
+}
+
+.comments {
+    margin-top: 50px;
+    height: 30vh;
+    width: 100%;
+    background-color: whitesmoke;
+    margin-left: 10%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+
+.comment {
+    margin-top: 10px;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.comments>h3 {
+    text-align: center;
+    font-family: 'Lexend Zetta', sans-serif;
+}
+
+.author {
+    font-size: 24px;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.commentText {
+    color: grey;
+}
