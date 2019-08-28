@@ -13,17 +13,13 @@ class Navbar
         `
             <img src="/uploads/logo.png" class="logoImage" width="30vw" />
             <div class="logo">
-                <input type="text" placeholder="Search By Name">
-                <button>Search</button>
+                <h4>Recipe Book</h4>
             </div>
-
-
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+                <li><a href="#page3">Login</a></li>
             </ul>
-
             <div class="burger">
                 <div class="line1"></div>
                 <div class="line2"></div>
