@@ -6,6 +6,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true}));
 
 server.use(express.static("./public"));
+server.use("/user", express.static("./private"));
 server.use("/uploads", express.static("./uploads"));
 
 const PORT = 4000;

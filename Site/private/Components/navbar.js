@@ -19,8 +19,9 @@ class Navbar
 
 
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="/user">Home</a></li>
+                <li><a href="/user/profile.html">Profile</a></li>
+                <li><a href="#" id="giveMeModal">Add Recipe</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
 
