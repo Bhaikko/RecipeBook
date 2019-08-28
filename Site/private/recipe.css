@@ -3,3 +3,84 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+#flipbook {
+    position: absolute;
+    margin-top: 3%;
+    left: 20vw;    
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    padding: 10px;
+    
+}
+
+
+.page1 {
+    background-color: black;
+}
+
+
+.coverpage {
+    padding: 10px;
+    background-color: red;
+    background-image: url("/uploads/users/recipeBookCover.jpg");
+    background-size: contain;
+}
+
+.recipeName {
+    font-weight: bolder;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: underline;
+    letter-spacing: 2px;
+    margin-left: 2%;
+    
+}
+
+.rating {
+    position: absolute;
+    top: 45%;
+    left: 55%;
+}
+
+.rating img {
+    width: 7%;
+}
+
+.number {
+    color: grey;
+    font-size: 10px;
+}
+
+.authorProfile {
+    margin-top: 2%;
+    width: 15%;
+    vertical-align: middle;
+    border-radius: 30px;
+    margin-left: 25%;
+    border: 2px dashed black;
+}
+
+.authorProfileName {
+    text-align: right;
+    margin-right: 15%;
+    margin-top: -2%;
+}
+
+#reviewButton {
+    border: 0;
+    padding: 0;
+    background: none;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.heart {
+    width: 10%;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    
+}
+
+
