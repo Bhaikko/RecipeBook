@@ -4,27 +4,33 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 #flipbook {
     position: absolute;
     margin-top: 3%;
     left: 20vw;    
     font-family: 'Poppins', sans-serif;
-    color: black;
-    padding: 10px;
+    color: white;
     
 }
 
 
-.page1 {
-    background-color: black;
+.page {
+    background-color: #3EB0E7;
+    color: whitesmoke;
+    
 }
 
 
 .coverpage {
-    padding: 10px;
     background-color: red;
     background-image: url("/uploads/users/recipeBookCover.jpg");
     background-size: contain;
+
 }
 
 .recipeName {
@@ -39,7 +45,7 @@
 
 .rating {
     position: absolute;
-    top: 45%;
+    top: 70%;
     left: 55%;
 }
 
@@ -53,11 +59,11 @@
 }
 
 .authorProfile {
-    margin-top: 2%;
+    margin-top: 10%;
     width: 15%;
     vertical-align: middle;
     border-radius: 30px;
-    margin-left: 25%;
+    margin-left: 30%;
     border: 2px dashed black;
 }
 
@@ -73,6 +79,8 @@
     background: none;
     font-weight: bolder;
     cursor: pointer;
+    color: white;
+    
 }
 
 .heart {
@@ -83,4 +91,71 @@
     
 }
 
+.pageHeading {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-weight: normal;
+}
 
+
+table {
+    margin-top: 5%;
+    margin-left: 5%;
+    border-collapse: collapse;
+    
+}
+
+thead {
+    display: block;
+}
+
+tbody {
+    display: block;
+    height: 50vh;
+    
+    overflow-y: auto;
+}
+
+th, td {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    padding-right: 100px;
+    padding-top: 10px;
+}
+
+.recipeImage {
+    width: 60%;
+    margin-top: 10%;
+    margin-left: 20%;
+    border-radius: 20px;
+    border: 2px solid black;
+
+}
+
+.directions-list {
+    margin-top: 5%;
+    margin-left: 10%;
+    height: 60vh;
+    overflow-y: auto;
+    list-style-position: inside;
+}
+
+
+.lastpage {
+    text-align: center;
+}
+
+.message {
+    margin-top: 15%;
+}
+
+.note {
+    margin-top: 15%;
+    font-size: 40px;
+    font-family: 'Pacifico', cursive;
+    text-decoration: underline;
+}
+
+.backcover {
+    
+}
