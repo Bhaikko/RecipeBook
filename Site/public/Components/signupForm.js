@@ -87,19 +87,27 @@ class SignupForm
             }
             else if(!this.passwordValidation(signupPassword.value))
             {
-                signupError.innerHTML = "Password Must Contain A Letter and <br> A Number and <br> Should Of Of Length More Than 8";
+                signupError.innerHTML = "Password Must Contain A Letter and <br> A Number and <br> Should Of Of Length More Than 8.";
                 return;
             }
-            //Check If username or email exists in database
 
-            signupForm.submit()
-        })
+            $.post("/user/checkUser", {
+                username: signupUsername.value,
+                email: signupEmail.value
+            }, res => {
+                console.log(res);
+                if(res == "Exist")
+                    signupError.innerHTML = "Username or Email already exist";
+                else 
+                signupForm.submit()
+            });            
+        });
 
 
     }
 
     passwordValidation = (password) => {
-        console.log(password);
+
 
         if(password.length < 8)
             return false;
