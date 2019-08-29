@@ -88,4 +88,12 @@ input:focus {
 }
 
 
+#signupError {
+    /* font-size: 20px; */
+    color: red;
+}
+
+#loginError {
+    color: red;
+}
 
