@@ -3,22 +3,33 @@ const bcrypt = require("bcrypt");
 
 const route = express.Router();
 
-const { checkUser, addUser} = require("./../../database/userDatabaseHandler");
+const { checkUser, addUser, checkCredentials} = require("./../../database/userDatabaseHandler");
+const { passport } = require("./../../passport");
 
-route.use(express.static(__dirname + "/../../private"));
 
-route.post("/login", (req, res) => {
-    
-});
+const saltRounds = 10;
+
+const checkLoginStatus = (req, res, next) => {
+    if(!req.user)
+    {   
+        res.redirect("/#page3");
+        return;
+    }
+
+    next();
+}
+
+route.post("/login", passport.authenticate("user", {
+    successRedirect: "/user",
+    failureRedirect: "/"
+}));
+
 
 route.post("/signup", (req, res) => {
-    // console.log(req.body);
-
-    bcrypt.hash(req.body.password, 10, function(err, password) {
+    bcrypt.hash(req.body.password, saltRounds, function(err, password) {
         addUser(req.body.username, req.body.email, password)
             .then(() => res.redirect("/"));
     });
-
 });
 
 route.post("/checkUser", (req, res) => {
@@ -26,6 +37,31 @@ route.post("/checkUser", (req, res) => {
     checkUser(req.body.username, req.body.email)
         .then(response => res.send(response));
 });
+
+route.post("/checkCredentials", (req, res) => {
+    checkCredentials(req.body.username)
+        .then(user => {
+            if(user)
+            {
+                bcrypt.compare(req.body.password, user.password, (err, bCorrect) => {
+                    if(bCorrect)    
+                        res.send("OK");
+                    else 
+                        res.send("NotOk");
+
+                })
+                return;
+            }
+
+            res.send("NotOk");
+
+        })
+   
+    
+    
+});
+
+route.use(checkLoginStatus, express.static(__dirname + "/../../private"));
 
 module.exports = {
     route 

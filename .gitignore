@@ -1,3 +1,6 @@
 /Site/node_modules
 
 /Site/private/turn.js
+
+
+/Site/database/sessions/*

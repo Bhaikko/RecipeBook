@@ -20,7 +20,7 @@ class LoginForm
             </div>
 
             <div class="textb">
-                <input type="password" id="loginPassword">
+                <input type="password" id="loginPassword" name="password">
                 <span data-placeholder="Password"></span>
             </div>
 
@@ -73,10 +73,19 @@ class LoginForm
                 loginError.innerText = "Please Enter Password";
                 return; 
             }
-            //Check If username and password is correct
 
-            loginForm.submit()
-        })
+            $.post("/user/checkCredentials", {
+                username: loginUsername.value,
+                password: loginPassword.value 
+            }, response => {
+                if(response == "OK")
+                    loginForm.submit()
+                else 
+                    loginError.innerText = "Invalid Username Or Password";
+            });
+
+            
+        });
     }
 }
 

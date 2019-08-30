@@ -22,7 +22,7 @@ class Navbar
                 <li><a href="/user">Home</a></li>
                 <li><a href="/user/profile.html">Profile</a></li>
                 <li><a href="#" id="giveMeModal">Add Recipe</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
 
             <div class="burger">

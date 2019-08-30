@@ -27,7 +27,17 @@ const addUser = (username, email, password) => {
     });
 }
 
+const checkCredentials = (username) => {
+    return Users.findOne({
+        where: {
+            username
+        }
+    })
+        .then(user => user);
+}
+
 module.exports = {
     checkUser,
-    addUser
+    addUser,
+    checkCredentials
 }
