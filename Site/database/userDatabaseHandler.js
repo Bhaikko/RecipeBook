@@ -23,7 +23,8 @@ const addUser = (username, email, password) => {
     return Users.create({
         username,
         password,
-        email 
+        email,
+        image: "/uploads/users/defaultProfilePicture.png" 
     });
 }
 

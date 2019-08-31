@@ -20,6 +20,9 @@ const Users = database.define("users", {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true 
+    },
+    image: {
+        type: Sequelize.STRING,
     }
 });
 

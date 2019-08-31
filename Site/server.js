@@ -17,7 +17,7 @@ const sessionMiddleware = session({
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({
-        url: "mongodb://127.0.0.1:5000/sessions",
+        url: "mongodb://127.0.0.1:5000/sessions"
     })
 });
 

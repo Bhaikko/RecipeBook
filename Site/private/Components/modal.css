@@ -63,6 +63,16 @@
     height: 100px;
     max-width: 100%;
     min-width: 100%;
+    padding: 10px;
+}
+
+.recipe-ingredient-name {
+    padding: 5px;
+    
+}
+.recipe-ingredient-quantity {
+    padding: 5px;
+
 }
 
 @keyframes modal-slide-down {
@@ -75,3 +85,6 @@
     }
 }
 
+button {
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@ class Navbar
         this.addHeaders();
         this.render();
         this.navSlide();
+        this.search();
     }
 
     render = () => {
@@ -13,8 +14,8 @@ class Navbar
         `
             <img src="/uploads/logo.png" class="logoImage" width="30vw" />
             <div class="logo">
-                <input type="text" placeholder="Search By Name">
-                <button>Search</button>
+                <input type="text" placeholder="Search By Name" id="nav-search-value">
+                <button id="nav-search">Search</button>
             </div>
 
 
@@ -58,6 +59,12 @@ class Navbar
         head[0].innerHTML += `<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">`;
         head[0].innerHTML += `<link rel="stylesheet" href="./Components/navbar.css">`;
 
+    }
+
+    search = () => {
+        $("#nav-search").click(event => {
+            window.location = "/user?name=" + $("#nav-search-value").val();
+        });
     }
 };
 
