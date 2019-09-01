@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const route = express.Router();
 
-const { checkUser, addUser, checkCredentials} = require("./../../database/userDatabaseHandler");
+const { checkUser, addUser, checkCredentials } = require("./../../database/userDatabaseHandler");
 const { passport } = require("./../../passport");
 
 

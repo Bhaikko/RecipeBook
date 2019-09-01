@@ -1,4 +1,4 @@
-const { Recipes, Reviews, Users } = require("./database");
+const { Recipes, Reviews, Users, Favourites } = require("./database");
 const Op = require("sequelize").Op;
 
 
@@ -25,7 +25,7 @@ const addRecipe = (name, type, image, ingredients, directions, userId) => {
 
 const getRecipes = () => {
     return Recipes.findAll({
-        attributes: ["image", "name"],
+        attributes: ["image", "name", "id"],
         include: [
             {
                 model: Users,
@@ -43,7 +43,7 @@ const getRecipes = () => {
 
 const getRecipesByName = (name) => {
     return Recipes.findAll({
-        attributes: ["image", "name"],
+        attributes: ["image", "name", "id"],
         where: {
             name: {
                 [Op.like]: "%" + name + "%"
@@ -67,7 +67,7 @@ const getRecipesByType = (type) => {
 
     type = type.substr(1);
     return Recipes.findAll({
-        attributes: ["image", "name"],
+        attributes: ["image", "name", "id"],
         where: {
             type 
         },
@@ -85,9 +85,92 @@ const getRecipesByType = (type) => {
         .then(recipes => parser(recipes));
 }
 
+const getRecipeDetails = (id) => {
+    return Recipes.findOne({
+        where: {
+            id 
+        },
+        attributes: ["id", "directions", "image", "ingredients", "name"],
+        include: [
+            {
+                model: Users,
+                attributes: ["id", "image", "username"]
+            },
+            {
+                model: Reviews,
+                attributes: ["stars", "review"],
+                include: [{
+                    model: Users,
+                    attributes: ["username", "image"]
+                }]
+            }
+        ]
+    })
+        .then(recipe => recipe);
+}
+
+const addReview = (stars, review, userId, recipeId) => {
+    Reviews.create({
+        stars,
+        review,
+        userId,
+        recipeId 
+    })
+}
+
+const wishlistToggle = (userId, recipeId) => {
+    return Favourites.findOne({
+        where: {
+            userId,
+            recipeId 
+        }
+        
+    })
+        .then(item => {
+            if(item)
+            {
+                return Favourites.destroy({
+                    where: {
+                        userId,
+                        recipeId
+                    }
+                })
+                    .then(() => "Deleted");
+            }
+            else 
+            {
+                return Favourites.create({
+                    userId,
+                    recipeId 
+                })
+                    .then(() => "Added");
+            }
+        });
+}
+
+const checkInWishlist = (userId, recipeId) => {
+    return Favourites.findOne({
+        where: {
+            userId,
+            recipeId 
+        }
+        
+    })
+        .then(item => {
+            if(item)
+                return "Exist";
+            else 
+                return "DoesNotExist";
+        });
+}
+
 module.exports = {
     addRecipe,
     getRecipes,
     getRecipesByType,
-    getRecipesByName
+    getRecipesByName,
+    getRecipeDetails,
+    addReview,
+    wishlistToggle,
+    checkInWishlist
 }

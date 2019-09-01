@@ -4,8 +4,18 @@ const multer = require("multer");
 const route = express.Router();
 const upload = multer({ dest: "uploads/users/recipies"});
 
-const { addRecipe, getRecipes, getRecipesByName, getRecipesByType } = require("./../../database/recipeDatabaseHandler");
+const { addRecipe, getRecipes, getRecipesByName, getRecipesByType, getRecipeDetails, addReview, wishlistToggle, checkInWishlist } = require("./../../database/recipeDatabaseHandler");
 
+
+const checkLoginStatus = (req, res, next) => {
+    if(!req.user)
+    {   
+        res.redirect("/#page3");
+        return;
+    }
+
+    next();
+}
 
 route.post("/addRecipe", upload.single("recipeImage"), (req, res) => {
     
@@ -30,11 +40,33 @@ route.get("/getRecipeByName", (req, res) => {
 });
 
 route.get("/getRecipeByType", (req, res) => {
-
     getRecipesByType(req.query.type)
         .then(recipes => res.send(recipes));
+});
+
+route.get("/getRecipeDetails", (req, res) => {
+    getRecipeDetails(req.query.recipeid)
+        .then(recipe => res.send(recipe));
+});
+
+route.post("/addReview", (req, res) => {
+    addReview(req.body.stars, req.body.review, req.user.id, req.body.recipeid);
+    res.redirect("/recipe/recipe.html?recipeid=" + req.body.recipeid);
+});
+
+route.post("/toggleWishlistItem", (req, res) => {
+    // console.log(req.body);
+    wishlistToggle(req.user.id, req.body.recipeId)
+        .then(response => res.send(response));
+});
+
+route.get("/checkInWishlist", (req, res) => {
+    // console.log(req.query.id);
+    checkInWishlist(req.user.id, req.query.id)
+        .then(response => res.send(response));
 })
 
+route.use(checkLoginStatus, express.static(__dirname + "/../../private"));
 
 module.exports = {
     route 

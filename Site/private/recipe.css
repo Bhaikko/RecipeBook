@@ -12,7 +12,7 @@ body {
 #flipbook {
     position: absolute;
     margin-top: 3%;
-    left: 20vw;    
+    left: 10vw;    
     font-family: 'Poppins', sans-serif;
     color: white;
     
@@ -45,7 +45,7 @@ body {
 
 .rating {
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 55%;
 }
 
@@ -55,7 +55,7 @@ body {
 
 .number {
     color: grey;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .authorProfile {
@@ -87,8 +87,8 @@ body {
     width: 10%;
     position: absolute;
     bottom: 10px;
-    left: 10px;
-    
+    left: 80%;
+    cursor: pointer;
 }
 
 .pageHeading {
@@ -116,11 +116,13 @@ tbody {
     overflow-y: auto;
 }
 
-th, td {
+
+td {
     border-bottom: 2px solid black;
     padding-bottom: 10px;
-    padding-right: 100px;
+    padding-right: 70px;
     padding-top: 10px;
+    
 }
 
 .recipeImage {
@@ -135,7 +137,7 @@ th, td {
 .directions-list {
     margin-top: 5%;
     margin-left: 10%;
-    height: 60vh;
+    height: 50vh;
     overflow-y: auto;
     list-style-position: inside;
 }
@@ -156,6 +158,57 @@ th, td {
     text-decoration: underline;
 }
 
-.backcover {
-    
+.comments {
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-left: 5%;
+    padding-bottom: 20px;
+}
+
+.comment {
+    width: 90%;
+    border: 2px dashed black;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+.commentProfile {
+    width: 5%;
+}
+
+.backcoverRating {
+    position: static;
+    width: 25%;
+    display: inline-block;
+}
+
+
+#reviewForm {
+    margin-left: 10%;
+    /* margin-top: 15%; */
+    height: 80%;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.review-form-field {
+    margin-top: 10px;
+}
+
+#review-stars {
+    width: 40%;
+    height: 10%;
+    padding: 5px;
+
+}
+
+#review-text {
+    display: block;
+    width: 80%;
+    /* height: 40%; */
+    max-height: 30%;
+    max-width: 80%;
+    min-width: 80%;
+    overflow-y: auto;
+    padding: 5px;
 }

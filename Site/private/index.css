@@ -89,6 +89,7 @@ body {
     width: 15vw;
     border: 2px solid grey;
     position: relative;
+    z-index: 1;
 }
 
 .recipeImage {

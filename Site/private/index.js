@@ -1,15 +1,17 @@
 const renderRecipes = (recipes) => {
+
     const recipesBox = $($(".recipesBox")[0]);
+    recipesBox.empty();
     if(recipes == "")
         return;
     else if(typeof recipes == "string")
         recipes = [recipes];
     
-    recipesBox.empty();
+    
     recipes.map(recipe => {
         recipesBox.append(
             `
-                <div class="recipeCard">   
+                <div class="recipeCard" data-recipeid="${recipe.id}">   
                     <img class="recipeImage" src="/uploads/users/recipies/${recipe.image}" />
                     <div class="recipeContent">
                         <div class="recipeName">${recipe.name}</div>
@@ -44,9 +46,15 @@ catch {
     $.get("/recipe/getRecipes", recipes => renderRecipes(recipes));
 }
 
-
-
-
-$(".sidePanel").click(event => {
+$(document).on("click", ".sidePanel", event => {
     $.get("/recipe/getRecipeByType?type=" + event.target.innerText + " Recipe", recipes => renderRecipes(recipes));
 });
+
+let findParentRecipeCard = (element) => {
+    if(element.getAttribute("class") == "recipeCard")
+        return element;       
+    
+    return findParentRecipeCard(element.parentNode);
+}
+
+$(document).on("click", ".recipeCard", event => window.location = "/recipe/recipe.html?recipeid=" + findParentRecipeCard(event.target).getAttribute("data-recipeid"));

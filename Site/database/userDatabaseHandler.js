@@ -37,6 +37,7 @@ const checkCredentials = (username) => {
         .then(user => user);
 }
 
+
 module.exports = {
     checkUser,
     addUser,
