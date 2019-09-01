@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const route = express.Router();
 
-const { checkUser, addUser, checkCredentials, getDetails } = require("./../../database/userDatabaseHandler");
+const { checkUser, addUser, checkCredentials, getDetails, getFavouriteRecipes, deleteFavourite, deleteRecipe } = require("./../../database/userDatabaseHandler");
 const { passport } = require("./../../passport");
 
 const saltRounds = 10;
@@ -61,6 +61,21 @@ route.get("/getDetails", (req, res) => {
     getDetails(req.user.id)
         .then(details => res.send(details));
 });
+
+route.get("/getFavouriteRecipes", (req, res) => {
+    getFavouriteRecipes(req.user.id)
+        .then(details => res.send(details));
+});
+
+route.post("/deleteFavourite", (req, res) => {
+    deleteFavourite(req.body.recipeId, req.user.id)
+        .then(() => res.sendStatus(200));
+})
+route.post("/deleteRecipe", (req, res) => {
+    deleteRecipe(req.body.recipeId, req.user.id)
+        .then(() => res.sendStatus(200));
+})
+
 
 route.use(checkLoginStatus, express.static(__dirname + "/../../private"));
 

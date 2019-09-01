@@ -62,17 +62,19 @@ const Reviews = database.define("reviews", {
     }
 });
 
-const Favourites = database.define("favourites");
+const Favourites = database.define("favourites", {
+    userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false 
+    },
+    recipeId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
+});
 
-// 1 : N Associtaion
 Recipes.belongsTo(Users);
 Users.hasMany(Recipes);
-
-// M : N Association
-Recipes.belongsToMany(Users, {through: Favourites});
-Users.belongsToMany(Recipes, {through: Favourites});
-
-
 
 Reviews.belongsTo(Users);
 Reviews.belongsTo(Recipes);
