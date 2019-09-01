@@ -3,9 +3,8 @@ const bcrypt = require("bcrypt");
 
 const route = express.Router();
 
-const { checkUser, addUser, checkCredentials } = require("./../../database/userDatabaseHandler");
+const { checkUser, addUser, checkCredentials, getDetails } = require("./../../database/userDatabaseHandler");
 const { passport } = require("./../../passport");
-
 
 const saltRounds = 10;
 
@@ -55,10 +54,12 @@ route.post("/checkCredentials", (req, res) => {
 
             res.send("NotOk");
 
-        })
-   
-    
-    
+        })    
+});
+
+route.get("/getDetails", (req, res) => {
+    getDetails(req.user.id)
+        .then(details => res.send(details));
 });
 
 route.use(checkLoginStatus, express.static(__dirname + "/../../private"));

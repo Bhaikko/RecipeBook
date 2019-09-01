@@ -1,4 +1,4 @@
-const { Users } = require("./database");
+const { Users, Recipes, Favourites,Reviews } = require("./database");
 const Op = require("sequelize").Op;
 
 
@@ -37,9 +37,28 @@ const checkCredentials = (username) => {
         .then(user => user);
 }
 
+const getDetails = id => {
+    return Users.findOne({
+        where: {
+            id
+        },
+        attributes: ["username", "image", "about"],
+        include: [{
+            model: Recipes,
+            // attributes: []
+        }, {
+            model: Favourites,
+            // attributes: []
+        }]
+    })
+        .then(user => user);
+}
+
+
 
 module.exports = {
     checkUser,
     addUser,
-    checkCredentials
+    checkCredentials,
+    getDetails,
 }

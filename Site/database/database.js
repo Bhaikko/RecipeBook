@@ -23,6 +23,9 @@ const Users = database.define("users", {
     },
     image: {
         type: Sequelize.STRING,
+    },
+    about: {
+        type: Sequelize.STRING
     }
 });
 
@@ -48,8 +51,6 @@ const Recipes = database.define("recipes", {
     }
 });
 
-const Favourites = database.define("favourites", {});
-
 const Reviews = database.define("reviews", {
     stars: {
         type: Sequelize.INTEGER,
@@ -59,13 +60,19 @@ const Reviews = database.define("reviews", {
         type: Sequelize.TEXT,
         allowNull: false 
     }
-})
+});
 
+const Favourites = database.define("favourites");
+
+// 1 : N Associtaion
 Recipes.belongsTo(Users);
 Users.hasMany(Recipes);
 
+// M : N Association
 Recipes.belongsToMany(Users, {through: Favourites});
 Users.belongsToMany(Recipes, {through: Favourites});
+
+
 
 Reviews.belongsTo(Users);
 Reviews.belongsTo(Recipes);
