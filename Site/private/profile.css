@@ -168,3 +168,11 @@
 .commentText {
     color: grey;
 }
+
+.editImage {
+    width: 10%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}

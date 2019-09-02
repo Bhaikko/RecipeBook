@@ -1,10 +1,13 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
+const multer = require("multer");
+// const bcrypt = require("bcrypt");
 
 const route = express.Router();
 
-const { checkUser, addUser, checkCredentials, getDetails, getFavouriteRecipes, deleteFavourite, deleteRecipe } = require("./../../database/userDatabaseHandler");
+const { checkUser, addUser, checkCredentials, getDetails, getFavouriteRecipes, deleteFavourite, deleteRecipe, changeProfilePicture, changeAbout } = require("./../../database/userDatabaseHandler");
 const { passport } = require("./../../passport");
+
+const upload = multer({ dest: "uploads/users/profile"});
 
 const saltRounds = 10;
 
@@ -25,10 +28,13 @@ route.post("/login", passport.authenticate("user", {
 
 
 route.post("/signup", (req, res) => {
-    bcrypt.hash(req.body.password, saltRounds, function(err, password) {
-        addUser(req.body.username, req.body.email, password)
-            .then(() => res.redirect("/"));
-    });
+    // bcrypt.hash(req.body.password, saltRounds, function(err, password) {
+    //     addUser(req.body.username, req.body.email, password)
+    //         .then(() => res.redirect("/"));
+    // });
+
+    addUser(req.body.username, req.body.email, req.body.password)
+        .then(() => res.redirect("/"));
 });
 
 route.post("/checkUser", (req, res) => {
@@ -42,18 +48,17 @@ route.post("/checkCredentials", (req, res) => {
         .then(user => {
             if(user)
             {
-                bcrypt.compare(req.body.password, user.password, (err, bCorrect) => {
-                    if(bCorrect)    
+                // bcrypt.compare(req.body.password, user.password, (err, bCorrect) => {
+                    // if(bCorrect) 
+                    if(user.password == req.body.password)   
                         res.send("OK");
                     else 
                         res.send("NotOk");
 
-                })
+                // })
                 return;
             }
-
             res.send("NotOk");
-
         })    
 });
 
@@ -76,6 +81,15 @@ route.post("/deleteRecipe", (req, res) => {
         .then(() => res.sendStatus(200));
 })
 
+route.post("/changeProfilePicture", upload.single("profile"), (req, res) => {
+    changeProfilePicture(req.user.id, "/uploads/users/profile/" + req.file.filename)
+        .then(res.redirect("/user/profile.html"));
+});
+
+route.patch("/changeAbout", (req, res) => {
+    changeAbout(req.user.id, req.body.about)
+        .then(res.sendStatus(200));
+})
 
 route.use(checkLoginStatus, express.static(__dirname + "/../../private"));
 

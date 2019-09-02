@@ -110,6 +110,30 @@ const deleteFavourite = (recipeId, userId) => {
     })
 }
 
+const changeProfilePicture = (userId, image) => {
+    return Users.update({
+        image 
+    },
+    {
+        where:  {
+            id: userId
+        }
+    });
+        
+}
+
+const changeAbout = (userId, about) => {
+    return Users.update({
+        about 
+    },
+    {
+        where:  {
+            id: userId
+        }
+    });
+        
+}
+
 module.exports = {
     checkUser,
     addUser,
@@ -117,5 +141,7 @@ module.exports = {
     getDetails,
     getFavouriteRecipes,
     deleteRecipe,
-    deleteFavourite
+    deleteFavourite,
+    changeProfilePicture,
+    changeAbout
 }

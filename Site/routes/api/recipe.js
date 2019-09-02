@@ -20,7 +20,8 @@ const checkLoginStatus = (req, res, next) => {
 route.post("/addRecipe", upload.single("recipeImage"), (req, res) => {
     
     let ingredients = "";
-
+    if(typeof req.body["ingredients[][name]"] == "string")
+        req.body["ingredients[][name]"] = [req.body["ingredients[][name]"]];
     req.body["ingredients[][name]"].map((x, index) => {
         ingredients += req.body["ingredients[][name]"][index] + "#" + req.body["ingredients[][quantity]"][index] + "+";
     });

@@ -1,6 +1,10 @@
 $.get("/user/getDetails", details => {
     $(".userDetails").append(
         `
+            <form id="img-upload-form" method="POST" action="/user/changeProfilePicture" enctype="multipart/form-data">
+                <input type="file" id="imgupload" name="profile" hidden>
+            </form>
+            <img src="/uploads/editIcon.png" class="editImage">
             <img src="${details.image}" class="profilePicture">
             <div class="details">
                 <div class="username">${details.username}</div><br>
@@ -13,9 +17,9 @@ $.get("/user/getDetails", details => {
                 </div>
                 <div class="about">
                     <h4><u>About</u></h4>
-                    ${details.about}
+                    <div id="user-about">${details.about}</div>
                 </div>
-                <button class="editButton">Edit Profile</button>
+                <button class="editButton">Edit About</button>
             </div>
         `
     )
@@ -102,3 +106,41 @@ $(document).on("click", ".deleteFavourite", event => {
         event.target.parentNode.parentNode.remove();
     });
 });
+
+
+$(document).on("click", ".editImage", event => {
+    $("#imgupload").trigger("click");
+});
+
+$(document).on("input", "#imgupload", event => {
+    $("#img-upload-form").submit();
+})
+
+$(document).on("click", ".editButton", event => {
+    const aboutDom = $("#user-about");
+    console.log(aboutDom.attr("contenteditable"));
+    if(aboutDom.attr("contenteditable") == undefined)
+    {
+        aboutDom[0].setAttribute("contenteditable", ""); 
+        aboutDom.css({
+            "border": "2px solid black"
+        });
+        $(event.target).text("Done");
+    }
+    else if(aboutDom.attr("contenteditable") == "")
+    {
+        aboutDom.removeAttr("contenteditable"); 
+        aboutDom.css({
+            "border": "0px solid black"
+        });
+        $.ajax({
+            url: "/user/changeAbout",
+            data: {
+                about: aboutDom.text()
+            },
+            type: "PATCH",
+            success: () => window.location = window.location.href
+        })
+    }
+    
+})
