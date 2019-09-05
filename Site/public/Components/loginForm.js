@@ -29,6 +29,7 @@ class LoginForm
 
         `
     }
+    
 
     onFocus = () => {
         $(".textb input").on("focus", function() {

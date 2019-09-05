@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const route = express.Router();
 
@@ -28,13 +28,10 @@ route.post("/login", passport.authenticate("user", {
 
 
 route.post("/signup", (req, res) => {
-    // bcrypt.hash(req.body.password, saltRounds, function(err, password) {
-    //     addUser(req.body.username, req.body.email, password)
-    //         .then(() => res.redirect("/"));
-    // });
-
-    addUser(req.body.username, req.body.email, req.body.password)
-        .then(() => res.redirect("/"));
+    bcrypt.hash(req.body.password, saltRounds, function(err, password) {
+        addUser(req.body.username, req.body.email, password)
+            .then(() => res.redirect("/"));
+    });
 });
 
 route.post("/checkUser", (req, res) => {
@@ -48,14 +45,14 @@ route.post("/checkCredentials", (req, res) => {
         .then(user => {
             if(user)
             {
-                // bcrypt.compare(req.body.password, user.password, (err, bCorrect) => {
-                    // if(bCorrect) 
-                    if(user.password == req.body.password)   
+                bcrypt.compare(req.body.password, user.password, (err, bCorrect) => {
+                    if(bCorrect) 
+                    // if(user.password == req.body.password)   
                         res.send("OK");
                     else 
                         res.send("NotOk");
 
-                // })
+                })
                 return;
             }
             res.send("NotOk");
